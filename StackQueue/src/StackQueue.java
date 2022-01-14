@@ -2,6 +2,7 @@
  * StackQueue
  * A stack that is able to both enqueue and dequeue
  * Author: William Writer
+ * collaboration: I asked Ishan a few questions
  * Date: 1/14/22
  * On My Honor, I confirm that I followed all collaboration policy guidelines, and that the work I am submitting is my own: WW
  **/
@@ -29,15 +30,15 @@ public class StackQueue <T> {
     //dequeue method
     public T dequeue() {
         //variable to store the data removed to return it
-        StackNode pop;
+        T pop;
         //if there is no data return null
         if (count == 0) {
             return null;
         }
-        //if there is one piece of data, pop it
+        //if there is one piece of data, run
         else if (count == 1) {
             //pop the data and store the return in a variable
-            pop = stack1.pop();
+            pop = (T) stack1.pop();
         }
         //if stack is greater than one, remove data until last one from stack1 and add to stack2
         else {
@@ -45,9 +46,9 @@ public class StackQueue <T> {
             for (int i = 1; i < count; i++) {
                 stack2.push(stack1.pop());
             }
-            //remove the piece of data at the bottom
-            //pop the data and store the return in a variable
-            pop = stack1.pop();
+            //remove and return the top element
+//moves to last node
+            pop = (T) stack1.pop();
             //move all the data back to stack1
             for (int i = 1; i < count; i++) {
                 stack1.push(stack2.pop());
@@ -78,7 +79,7 @@ public class StackQueue <T> {
                 stack2.push(stack1.pop());
             }
             //store the data to return
-            StackNode returnStack = stack1.peek();
+            StackNode returnStack = (StackNode) stack1.peek();
             //move all the data back to stack1
             for (int i = 1; i < count; i++) {
                 stack1.push(stack2.pop());
